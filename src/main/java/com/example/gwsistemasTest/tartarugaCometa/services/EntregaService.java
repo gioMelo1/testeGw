@@ -12,22 +12,22 @@ import com.example.gwsistemasTest.tartarugaCometa.repositorys.EntregaRepository;
 public class EntregaService {
 
 	@Autowired
-	private EntregaRepository repository;
+	private EntregaRepository repositorio;
 	
 	public List<Entrega> listarEntregas() {
-		return repository.findAll();
+		return repositorio.findAll();
 	}
 
 	public void cadastrarEntrega(Entrega entrega) {
-		repository.save(entrega);
+		repositorio.save(entrega);
 		
 	}
 
 	public Entrega iniciarEditar(Long id) {
-		return repository.findById(id).get();
+		return repositorio.findById(id).get();
 	}
 
 	public void deleteEntrega(Long id) {
-		repository.delete(repository.findById(id).get());
+		repositorio.delete(repositorio.findById(id).get());
 	}
 }

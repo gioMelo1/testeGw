@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Entrega</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Detalhes da Entrega</h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Informações da Entrega</h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Remetente:</dt>
+                    <dd class="col-sm-9" th:text="${entrega.remetente.nome}">Remetente</dd>
+
+                    <dt class="col-sm-3">Destinatário:</dt>
+                    <dd class="col-sm-9" th:text="${entrega.destinatario.nome}">Destinatário</dd>
+
+                    <dt class="col-sm-3">Produto:</dt>
+                    <dd class="col-sm-9" th:text="${entrega.produto.nome}">Produto</dd>
+                </dl>
+            </div>
+            <div class="card-footer text-muted">
+				<a th:href="@{/entrega}" class="btn btn-primary">
+			        Voltar
+			    </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

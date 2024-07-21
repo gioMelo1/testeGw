@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <style>
+		body {
+		    font-family: Arial, sans-serif;
+		    background-color: #f5f5f5;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		header {
+		    background-color: #4CAF50;
+		    color: white;
+		    text-align: center;
+		    padding: 1rem 0;
+		}
+
+		main {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 2rem;
+		}
+
+		.product-list {
+		    width: 80%;
+		    max-width: 800px;
+		    display: grid;
+		    grid-template-columns: 1fr;
+		    gap: 1rem;
+		}
+
+		.product {
+		    background-color: white;
+		    padding: 1rem;
+		    border-radius: 8px;
+		    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.product h2 {
+		    margin: 0 0 0.5rem 0;
+		}
+
+		.product p {
+		    margin: 0.25rem 0;
+		}
+
+		.botao-personalizado {
+            background-color: #4CAF50; /* Verde */
+            border: none; /* Sem borda */
+            color: white; /* Texto branco */
+            padding: 15px 32px; /* Espaçamento interno */
+            text-align: center; /* Centralizar texto */
+            text-decoration: none; /* Sem sublinhado */
+            display: inline-block; /* Inline */
+            font-size: 16px; /* Tamanho da fonte */
+            margin: 4px 2px; /* Margem */
+            cursor: pointer; /* Cursor de ponteiro */
+            border-radius: 12px; /* Bordas arredondadas */
+            transition: background-color 0.3s; /* Transição suave */
+        }
+
+        .botao-personalizado:hover {
+            background-color: #45a049; /* Cor ao passar o mouse */
+        }
+
+        .botao-personalizado:active {
+            background-color: #3e8e41; /* Cor ao clicar */
+            box-shadow: 0 5px #666; /* Sombra ao clicar */
+            transform: translateY(4px); /* Mover um pouco para baixo ao clicar */
+        }
+		
+		.edit-button {
+		    background-color: #4CAF50;
+		    color: white;
+		    border: none;
+		    padding: 10px 20px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 16px;
+		    margin-top: 10px;
+		    cursor: pointer;
+		    border-radius: 5px;
+		    transition: background-color 0.3s;
+		}
+
+		.edit-button:hover {
+		    background-color: #45a049;
+		}
+	</style>
+		
+</head>
+<body>
+    <header>
+        <h1>Lista de Produtos</h1>
+    </header>
+	<div style="display: flex; justify-content: center; margin-top: 10px">
+		<a th:href="@{/produto/formProduto}">
+			<button type="button" class="botao-personalizado">Cadastrar Produto</button>
+		</a>
+	</div>
+	<div style="display: flex; justify-content: center; margin-top: 10px">
+		<a th:href="@{/login/home}">
+			<button type="button" class="botao-personalizado">HOME</button>
+		</a>
+	</div>
+	<br></br>
+    <main>
+		<div class="product-list" th:each="produto : ${list_products}">
+		    <div class="product">
+		        <h2>[[${produto.nome}]]</h2>
+		        <p>Valor: [[${produto.valor}]]</p>
+		        <p>Volume: [[${produto.volume}]]</p>
+		        <p>Peso: [[${produto.peso}]]</p>
+				<a th:href="@{/produto/formProduto/{id}(id=${produto.id})}">
+					<button type="button" class="edit-button">Editar</button>
+				</a>
+				<a th:href="@{/produto/deletarProduto/{id}(id=${produto.id})}">
+					<button type="button" class="edit-button" style="background-color: red">Deletar</button>
+				</a>
+		    </div>
+		</div>
+    </main>
+</body>
+</html>
